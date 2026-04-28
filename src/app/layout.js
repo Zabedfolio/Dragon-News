@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Header from "@/components/shared/Header";
@@ -7,6 +7,12 @@ import Header from "@/components/shared/Header";
 
 const poppins = Poppins({
   variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400","500","600","700"]
+})
+
+export const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["400","500","600","700"]
 })
