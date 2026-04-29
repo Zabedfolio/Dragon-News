@@ -1,15 +1,32 @@
 'use client'
 
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 const LoginPage = () => {
 
-    const handleLoginFunc = (e) => {
+    const [isShowPassword, setIsShowPassword] = useState(false);
+
+    const handleLoginFunc = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password)
+        // console.log(email, password)
+
+        const { data, error } = await authClient.signIn.email({
+            email: email, // required
+            password: password, // required
+            rememberMe: true,
+            callbackURL: "/",
+        });
+        console.log(data,error)
+        if(error){
+            alert(error.message)
+        }
+        if(data){
+            alert("Login Successful")
+        }
     }
 
     return (
@@ -34,7 +51,7 @@ const LoginPage = () => {
 
                 <label className="label mt-2">Password</label>
                 <input
-                    type="password"
+                    type={isShowPassword ? "text":"password"}
                     name="password"
                     className="input w-full"
                     placeholder="Password"
