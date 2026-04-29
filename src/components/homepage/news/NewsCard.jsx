@@ -60,7 +60,7 @@ const NewsCard = ({ n }) => {
             </p>
 
             {/* Read More */}
-            <Link href={''}>
+            <Link href={`/news/${n._id}`}>
                 <button className="btn bg-orange-400 mb-4 text-white">
                     Read More
                 </button>
