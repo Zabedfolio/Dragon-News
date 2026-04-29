@@ -22,7 +22,7 @@ export default async function Home() {
   // console.log(categories.news_category)
 
   const news = await getNewsByCategoryId("01");
-  console.log(news);
+  // console.log(news);
 
   return (
     <div className="grid grid-cols-12 gap-4 container mx-auto py-15">
