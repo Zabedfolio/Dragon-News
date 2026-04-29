@@ -3,6 +3,7 @@
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const LoginPage = () => {
 
@@ -20,11 +21,11 @@ const LoginPage = () => {
             rememberMe: true,
             callbackURL: "/",
         });
-        console.log(data,error)
-        if(error){
+        console.log(data, error)
+        if (error) {
             alert(error.message)
         }
-        if(data){
+        if (data) {
             alert("Login Successful")
         }
     }
@@ -50,13 +51,24 @@ const LoginPage = () => {
                 />
 
                 <label className="label mt-2">Password</label>
-                <input
-                    type={isShowPassword ? "text":"password"}
-                    name="password"
-                    className="input w-full"
-                    placeholder="Password"
-                    required
-                />
+                <div className="relative">
+                    <input
+                        type={isShowPassword ? "text" : "password"}
+                        name="password"
+                        className="input w-full pr-10"
+                        placeholder="Password"
+                        required
+                    />
+
+                    <button
+                        type="button"
+                        onClick={() => setIsShowPassword(!isShowPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                    >
+                        {isShowPassword ? <FaEye /> : <FaEyeSlash />}
+                    </button>
+                </div>
+
 
                 <button type="submit" className="btn btn-neutral mt-4 w-full">
                     Login
