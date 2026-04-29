@@ -1,29 +1,60 @@
+'use client'
+
+import Link from 'next/link';
 import React from 'react';
 
 const LoginPage = () => {
-  return (
-    <div className="flex justify-center mt-40">
-      <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xl border p-6">
 
-        <legend className="fieldset-legend text-lg font-semibold">
-          Login your account
-        </legend>
+    const handleLoginFunc = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(email, password)
+    }
 
-        <label className="label">Email</label>
-        <input type="email" className="input w-full" placeholder="Email" />
+    return (
+        <div className="flex justify-center mt-40">
+            <form
+                onSubmit={handleLoginFunc}
+                className="fieldset bg-base-200 border-base-300 rounded-box w-xl border p-6"
+            >
 
-        <label className="label mt-2">Password</label>
-        <input type="password" className="input w-full" placeholder="Password" />
+                <legend className="fieldset-legend text-lg font-semibold">
+                    Login your account
+                </legend>
 
-        <button className="btn btn-neutral mt-4 w-full">
-          Login
-        </button>
+                <label className="label">Email</label>
+                <input
+                    type="email"
+                    name="email"
+                    className="input w-full"
+                    placeholder="Email"
+                    required
+                />
 
-        <p className='text-center pt-3'>Dont’t Have An Account ? <span className='font-bold text-red-500'>Register</span> </p>
+                <label className="label mt-2">Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    className="input w-full"
+                    placeholder="Password"
+                    required
+                />
 
-      </fieldset>
-    </div>
-  );
+                <button type="submit" className="btn btn-neutral mt-4 w-full">
+                    Login
+                </button>
+
+                <p className="text-center pt-3">
+                    Don’t have an account?{' '}
+                    <Link href="/register" className="font-bold text-red-500">
+                        Register
+                    </Link>
+                </p>
+
+            </form>
+        </div>
+    );
 };
 
 export default LoginPage;
