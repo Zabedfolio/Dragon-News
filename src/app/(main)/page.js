@@ -1,4 +1,5 @@
 import LeftSideBar from "@/components/homepage/news/LeftSideBar";
+import RightSideBar from "@/components/homepage/news/RightSideBar";
 import Image from "next/image";
 
 async function getCategories() {
@@ -22,7 +23,9 @@ export default async function Home() {
 
       <div className="font-bold text-3xl bg-purple-400 col-span-6">Dragon News Home</div>
 
-      <div className="font-bold text-3xl bg-blue-300 col-span-3">Login With</div>
+      <div className="col-span-3">
+        <RightSideBar></RightSideBar>
+      </div>
 
     </div>
   );
